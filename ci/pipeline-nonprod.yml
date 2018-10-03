@@ -23,7 +23,7 @@ resources:
     check_every: 1m
     source:
       endpoint: https://artifactory.io.comcast.net
-      repository: "/ext-snapshot-local"
+      repository: "/libs-snapshot-local"
       regex: "concourse-web-(?<version>.*).jar"
       username: comet02
       password: cv3eccDcKckUTUAe
@@ -87,7 +87,7 @@ jobs:
         params:
           ARTIFACTORY_USER: comet02
           ARTIFACTORY_PW: cv3eccDcKckUTUAe
-          ARTIFACTORY_URL: https://artifactory.io.comcast.net/ext-snapshot-local
+          ARTIFACTORY_URL: https://artifactory.io.comcast.net/libs-snapshot-local
       - put: artifactory-repository
         params: { file: ./artifactory-repository/concourse-web-*.jar }
         
