@@ -16,6 +16,6 @@ outputs:
   - name: updated-version
 
 run:
-  path: ./concourse-web/ci/scripts/version_source.sh
-  #path: cat
-  #args: ['concourse-web/ci/scripts/version_source.sh']
+  #path: ./concourse-web/ci/scripts/version_source.sh
+  path: cat
+  args: ['concourse-web/ci/scripts/version_source.sh']
