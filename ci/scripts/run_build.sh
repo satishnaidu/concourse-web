@@ -15,5 +15,7 @@ mvn clean install
 set -e -u -x
 
 version=`cat ../version/number`
-popd
+
+ls target/*
+
 echo "build success"
