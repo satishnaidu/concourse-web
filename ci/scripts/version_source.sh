@@ -1,13 +1,11 @@
 #!/bin/bash
 
-#set -eux
+set -eux
 
-#git clone concourse-web updated-concourse-web
+git clone concourse-web updated-concourse-web
 
-#cd updated-concourse-web
+cd updated-concourse-web
 
-#version=`cat ../version/number`
+version=`cat ../version/number`
 
-#git tag concourse-web-v$version.build
-echo "hello world"
-ls -ltra
+git tag concourse-web-v$version.build
