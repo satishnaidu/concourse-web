@@ -12,7 +12,7 @@ inputs:
   - name: concourse-web
 
 run:
-  path: ./concourse-web/ci/scripts/run_build.sh
+  path: ./concourse-web/ci/scripts/task_show_uname.sh
   #path: ls
   #args: [-R]
 
