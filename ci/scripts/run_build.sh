@@ -7,8 +7,8 @@ set -e -u -x
 
 cd concourse-web
 set -e -u +x
-apt-get update && apt-get -y upgrade
-apt-get install -y maven
+#apt-get update && apt-get -y upgrade
+#apt-get install -y maven
 echo mvn --version
 
 mvn clean install
