@@ -1,25 +1,19 @@
-#!/bin/bash
+#!/bin/sh
+
+uname -a
+ls -ltra
 
 set -e -u -x
 
-chmod +x concourse-web/mvnw
-
-export TERM=${TERM:-dumb}
-
-pushd concourse-web
-
+cd concourse-web
 set -e -u +x
-
-#./mvnw clean build zipTestSources --debug --refresh-dependencies --info -Partifactory_user=$ARTIFACTORY_USER -Partifactory_password=$ARTIFACTORY_PW -Partifactory_contextUrl=$ARTIFACTORY_URL
+apt-get update && apt-get -y upgrade
+apt-get install -y maven
+echo mvn --version
 
 mvn clean install
-
 set -e -u -x
 
 version=`cat ../version/number`
-
 popd
-
-#cp ./concourse-web/target/concourse-web*.jar ./artifactory-repository/location-service-$version.jar
-
-
+echo "build success"
