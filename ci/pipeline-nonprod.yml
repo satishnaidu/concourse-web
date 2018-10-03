@@ -1,0 +1,59 @@
+---
+#resource_types:
+#  - name: artifactory
+#    type: docker-image
+#    source:
+#      repository: pivotalservices/artifactory-resource
+
+groups:
+  - name: Build
+    jobs: 
+      - release-candidate-version
+      - build
+
+resources:
+  - name: concourse-web
+    type: git
+    source:
+      uri: https://github.com/satishnaidu/concourse-web.git
+      branch: develop
+      username: satishnaidu
+      password: Sunday@23
+  - name: version
+    type: semver
+    source:
+      driver: git
+      uri: https://gist.github.com/ef4361ca808a7b41fe7c9551467d81f6.git
+      branch: master
+      file: concourse-web.version
+      username: satishnaidu
+      password: Sunday@23
+
+jobs:
+  - name: release-candidate-version
+    serial: true
+    plan:
+      - get: concourse-web
+        trigger: true
+      - get: version
+        params: {pre: rc}
+      - put: version
+        params: {file: version/number}
+      - task: update-version
+        file: concourse-web/ci/tasks/version_source.yml
+      - put: concourse-web
+        params: {repository: updated-concourse-web}
+
+  - name: build
+    plan:
+      - get: version
+        trigger: true
+        passed: [release-candidate-version]
+      - get: concourse-web
+        trigger: true
+        passed: [release-candidate-version]
+      - task: run-build
+        file: concourse-web/ci/tasks/run-build.yml
+        params:
+          ARTIFACTORY_USER: satishnaidu
+          ARTIFACTORY_PW: Sunday@23

@@ -2,10 +2,10 @@
 
 set -eux
 
-git clone location-service updated-location-service
+git clone concourse-web updated-concourse-web
 
-cd updated-location-service
+cd updated-concourse-web
 
 version=`cat ../version/number`
 
-git tag location-service-v$version.build
+git tag concourse-web-v$version.build

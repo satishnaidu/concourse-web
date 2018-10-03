@@ -8,12 +8,12 @@ image_resource:
     tag: git
 
 inputs:
-  - name: location-service
+  - name: concourse-web
   - name: version
 
 outputs:
-  - name: updated-location-service
+  - name: updated-concourse-web
   - name: updated-version
 
 run:
-  path: location-service/ci/scripts/version_source.sh
+  path: concourse-web/ci/scripts/version_source.sh

@@ -1,0 +1,17 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source: 
+    repository: java
+    tag: latest
+
+inputs:
+  - name: version
+  - name: concourse-web
+
+run:
+  path: concourse-web/ci/scripts/run_build.sh
+
+
