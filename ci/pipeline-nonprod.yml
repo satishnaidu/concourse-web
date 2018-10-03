@@ -54,6 +54,4 @@ jobs:
         passed: [release-candidate-version]
       - task: run-build
         file: concourse-web/ci/tasks/run-build.yml
-        params:
-          ARTIFACTORY_USER: satishnaidu
-          ARTIFACTORY_PW: Sunday@23
+        
