@@ -11,6 +11,14 @@ inputs:
   - name: version
   - name: concourse-web
 
+outputs:
+  - name: artifactory-repository
+
+params:
+  ARTIFACTORY_USER:
+  ARTIFACTORY_PW:
+  ARTIFACTORY_URL:
+
 run:
   path: ./concourse-web/ci/scripts/run_build.sh
   #path: ls
