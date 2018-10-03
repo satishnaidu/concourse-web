@@ -1,4 +1,7 @@
-#!/bin/bash
+#!/bin/sh
+
+uname -a
+ls -ltra
 
 set -eux
 
