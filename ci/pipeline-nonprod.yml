@@ -53,5 +53,5 @@ jobs:
         trigger: true
         passed: [release-candidate-version]
       - task: run-build
-        file: concourse-web/ci/tasks/run-build.yml
+        file: concourse-web/ci/tasks/run_build.yml
         
