@@ -18,5 +18,7 @@ version=`cat ../version/number`
 
 ls target/*
 
-cp target/concourseweb*.jar ./artifactory-repository/concourse-web-$version-SNAPSHOT.jar
+ls ../ -R
+
+cp target/concourseweb*.jar ../artifactory-repository/concourse-web-$version-SNAPSHOT.jar
 echo "build success"
