@@ -16,6 +16,6 @@ outputs:
   - name: updated-version
 
 run:
-  path: concourse-web/ci/scripts/run_build.sh
-  #path: ls
-  #args: [-R]
+  #path: concourse-web/ci/scripts/run_build.sh
+  path: cat
+  args: ['concourse-web/ci/scripts/version_source.sh']
