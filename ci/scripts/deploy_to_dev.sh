@@ -21,6 +21,10 @@ set -x
 
 current_app_name=concourse-web-$version
 
-scp  -o StrictHostKeyChecking=no ./deploy-to-dev/concourse-web-$version.jar root@10.0.0.243://Users/sandey080/Comcast/Project/Codebase/workspace/concourse/concourse-web
+apt-get update && apt-get -y upgrade
+
+apt-get install -y sshpass
+
+sshpass -p 'Comcast@12' scp  -o StrictHostKeyChecking=no ./deploy-to-dev/concourse-web-$version.jar sandey080@10.0.0.243://Users/sandey080/Comcast/Project/Codebase/workspace/concourse/concourse-web
 
 echo "Copying success to target location"
