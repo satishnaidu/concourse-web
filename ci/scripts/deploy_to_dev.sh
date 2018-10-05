@@ -21,6 +21,6 @@ set -x
 
 current_app_name=concourse-web-$version
 
-scp ./deploy-to-dev/concourse-web-$version.jar root@10.0.0.243://Users/sandey080/Comcast/Project/Codebase/workspace/concourse/concourse-web
+scp  -o StrictHostKeyChecking=no ./deploy-to-dev/concourse-web-$version.jar root@10.0.0.243://Users/sandey080/Comcast/Project/Codebase/workspace/concourse/concourse-web
 
 echo "Copying success to target location"
