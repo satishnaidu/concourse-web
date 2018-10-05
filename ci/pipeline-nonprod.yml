@@ -25,8 +25,8 @@ resources:
       endpoint: https://artifactory.io.comcast.net
       repository: "/libs-snapshot-local"
       regex: "concourse-web-(?<version>.*).jar"
-      username: '!spectra'
-      password: spectra1!
+      username: "!spectra"
+      password: "spectra1!"
   - name: concourse-web
     type: git
     source:
