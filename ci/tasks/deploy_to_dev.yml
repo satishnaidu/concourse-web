@@ -1,0 +1,26 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source: 
+    repository: pivotalservices/docker-concourse-cf-tools
+    tag: "latest"
+
+inputs:
+  - name: version
+  - name: concourse-web
+
+outputs:
+  - name: deploy-to-dev
+
+params:
+  ARTIFACTORY_USER:
+  ARTIFACTORY_PW:
+  ARTIFACTORY_URL:
+
+
+run:
+  path: concourse-web/ci/scripts/deploy_to_dev.sh
+
+

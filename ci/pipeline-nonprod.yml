@@ -16,6 +16,9 @@ groups:
     jobs: 
       - release-candidate-version
       - build
+  - name: NonProductionDeployment
+    jobs:
+      - deploy-to-development
 
 resources:
   - name: artifactory-repository
@@ -90,4 +93,25 @@ jobs:
           ARTIFACTORY_URL: https://artifactory.io.comcast.net/libs-snapshot-local
       - put: artifactory-repository
         params: { file: ./artifactory-repository/concourse-web-*.jar }
+
+  - name: deploy-to-development
+    serial: true
+    plan:
+      - get: version
+        trigger: true
+        passed: [build]
+      - get: location-service
+        passed: [build]
+      - task: deploy-dev
+        file: location-service/ci/tasks/deploy_to_dev.yml
+        params:
+          ARTIFACTORY_USER: '!spectra'
+          ARTIFACTORY_PW: spectra1!
+          ARTIFACTORY_URL: https://artifactory.io.comcast.net/libs-snapshot-local
+      - put: deploy-to-dev
+        params:
+          manifest: deploy-to-dev/manifest.yml
+          environment_variables:
+            CF_USER: ((service_user))
+            CF_PASSWORD: ((service_pw))
         
