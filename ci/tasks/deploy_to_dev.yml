@@ -21,6 +21,6 @@ params:
 
 
 run:
-  path: ./concourse-web/ci/scripts/deploy_to_dev.sh
+  path: ./concourse-web/ci/scripts/task_show_uname.sh
 
 
