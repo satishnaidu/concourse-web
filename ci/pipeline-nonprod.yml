@@ -103,7 +103,7 @@ jobs:
       - get: concourse-web
         passed: [build]
       - task: deploy-dev
-        file: location-service/ci/tasks/deploy_to_dev.yml
+        file: concourse-web/ci/tasks/deploy_to_dev.yml
         params:
           ARTIFACTORY_USER: '!spectra'
           ARTIFACTORY_PW: spectra1!

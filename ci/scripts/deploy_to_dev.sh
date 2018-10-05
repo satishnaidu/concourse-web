@@ -1,5 +1,8 @@
 #!/bin/sh
 
+uname -a
+ls -ltra
+
 set -e -u -x
 
 version=`cat ./version/number`
