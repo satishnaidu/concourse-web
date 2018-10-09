@@ -14,6 +14,9 @@ inputs:
 outputs:
   - name: artifactory-repository
 
+cache:
+  - path: .m2
+
 params:
   ARTIFACTORY_USER:
   ARTIFACTORY_PW:

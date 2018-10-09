@@ -3,6 +3,10 @@
 uname -a
 ls -ltra
 
+pwd
+
+ls -ltra .m2
+
 set -e -u -x
 
 cd concourse-web
@@ -11,7 +15,9 @@ set -e -u +x
 #apt-get install -y maven
 echo mvn --version
 
-mvn clean install
+ls -ltr ../.m2
+
+mvn -Dmaven.repo.local="../.m2"  clean install
 set -e -u -x
 
 version=`cat ../version/number`
