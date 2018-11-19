@@ -13,7 +13,7 @@ git config --global user.email "satishkumar_andey@comcast.com"
 git config --global user.name "sandey080"
 
 git pull origin develop
-echo "Increment snapshot version for next release"
+echo "Increment snapshot version for next release "
 mvn build-helper:parse-version versions:set -DnewVersion=\${parsedVersion.majorVersion}.\${parsedVersion.minorVersion}.\${parsedVersion.nextIncrementalVersion}-SNAPSHOT
 
 echo "Generating next release version"
