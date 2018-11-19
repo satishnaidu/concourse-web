@@ -25,7 +25,6 @@ git push origin $VERSION
 
 git log -3
 
-
 git pull origin develop
 echo "Increment snapshot version for next release"
 mvn build-helper:parse-version versions:set -DnewVersion=\${parsedVersion.majorVersion}.\${parsedVersion.minorVersion}.\${parsedVersion.nextIncrementalVersion}-SNAPSHOT
