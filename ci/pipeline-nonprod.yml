@@ -74,6 +74,7 @@ jobs:
   - name: deploy-to-development
     serial: true
     plan:
+      - get: version
       - get: concourse-web
         passed: [build]
       - task: deploy-dev

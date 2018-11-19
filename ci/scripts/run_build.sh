@@ -21,8 +21,7 @@ git config --global user.name "sandey080"
 git pull origin develop
 echo "Creating tag for the for new checkins in develop branch"
 git tag -a $VERSION -m "Created tag $VERSION for the new checkins in develop"
-#git push origin $VERSION
-git push origin --tags
+git push origin $VERSION
 
 git pull origin develop
 echo "Increment snapshot version for next release"
@@ -31,7 +30,7 @@ mvn build-helper:parse-version versions:set -DnewVersion=\${parsedVersion.majorV
 echo "Generating next release version"
 VERSION_NEW=$(mvn org.apache.maven.plugins:maven-help-plugin:3.1.0:evaluate -Dexpression=project.version -q -DforceStdout)
 
-echo "next release version is " $VERSION_NEW
+echo "next release version is $VERSION_NEW" 
 git add pom.xml
 echo "added pom.xml file to develop"
 git commit -m "Updated snapshot with latest version for next release $VERSION_NEW" 
