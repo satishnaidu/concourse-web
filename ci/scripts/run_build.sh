@@ -23,16 +23,19 @@ mvn -Dmaven.repo.local="../.m2" clean install -Dmaven.test.skip=true
 
 VERSION=$(mvn org.apache.maven.plugins:maven-help-plugin:3.1.0:evaluate -Dexpression=project.version -q -DforceStdout)
 
+git config --global user.email "satishkumar_andey@comcast.com"
+git config --global user.name "sandey080"
+
 echo "Creating tag for the for new checkins in develop branch"
 git tag -a $VERSION-SNAPSHOT -m "Created tag $VERSION for the new checkins in develop"
 
+git push origin $VERSION-SNAPSHOT
 
 
 echo "Increment snapshot version for next release"
 mvn build-helper:parse-version versions:set -DnewVersion=\${parsedVersion.majorVersion}.\${parsedVersion.minorVersion}.\${parsedVersion.nextIncrementalVersion}-SNAPSHOT
 
-git config --global user.email "satishkumar_andey@comcast.com"
-git config --global user.name "sandey080"
+
 
 VERSION_NEW=$(mvn org.apache.maven.plugins:maven-help-plugin:3.1.0:evaluate -Dexpression=project.version -q -DforceStdout)
 
