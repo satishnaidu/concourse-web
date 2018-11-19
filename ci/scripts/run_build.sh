@@ -21,7 +21,7 @@ ls -ltr ../.m2
 
 mvn -Dmaven.repo.local="../.m2" clean install -Dmaven.test.skip=true
 
-VERSION=$(mvn -s ci/settings.xml org.apache.maven.plugins:maven-help-plugin:3.1.0:evaluate -Dexpression=project.version -q -DforceStdout)
+VERSION=$(mvn org.apache.maven.plugins:maven-help-plugin:3.1.0:evaluate -Dexpression=project.version -q -DforceStdout)
 
 echo "Increment snapshot version for next release"
 mvn build-helper:parse-version versions:set -DnewVersion=\${parsedVersion.majorVersion}.\${parsedVersion.minorVersion}.\${parsedVersion.nextIncrementalVersion}-SNAPSHOT versions:commit
