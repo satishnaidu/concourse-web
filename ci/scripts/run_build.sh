@@ -33,7 +33,7 @@ echo "Build success and released the SNAPSHOT version "+ $VERSION
 
 ls -ltra target/*
 
-cp target/concourse-web*.war ../artifactory-repository/concourse-web-$VERSION.war
+cp target/concourse-web*.jar ../artifactory-repository/concourse-web-$VERSION.jar
 echo $VERSION >> ../version/number
 
 
