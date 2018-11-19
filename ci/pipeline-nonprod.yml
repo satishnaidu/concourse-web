@@ -56,6 +56,7 @@ resources:
 
 jobs:
   - name: build
+    serial: true
     plan:
       - get: concourse-web
         trigger: true
