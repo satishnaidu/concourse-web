@@ -27,9 +27,9 @@ git config --global user.email "satishkumar_andey@comcast.com"
 git config --global user.name "sandey080"
 
 echo "Creating tag for the for new checkins in develop branch"
-git tag -a $VERSION-SNAPSHOT -m "Created tag $VERSION for the new checkins in develop"
+git tag -a $VERSION -m "Created tag $VERSION for the new checkins in develop"
 
-git push origin $VERSION-SNAPSHOT
+git push origin $VERSION
 
 
 echo "Increment snapshot version for next release"
