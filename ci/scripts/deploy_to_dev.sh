@@ -5,7 +5,8 @@ ls -ltra
 
 set -e -u -x
 
-version=`cat ./version/number`
+version=`git describe --abbrev=0 --tags`
+#version=`cat ./version/number`
 echo "version number "+$version
 
 set +x
