@@ -24,7 +24,6 @@ git tag -a $VERSION -m "Created tag $VERSION for the new checkins in develop"
 #git push origin $VERSION
 git push origin --tags
 
-
 git pull origin develop
 echo "Increment snapshot version for next release"
 mvn build-helper:parse-version versions:set -DnewVersion=\${parsedVersion.majorVersion}.\${parsedVersion.minorVersion}.\${parsedVersion.nextIncrementalVersion}-SNAPSHOT
