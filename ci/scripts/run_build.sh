@@ -26,8 +26,8 @@ VERSION=$(mvn org.apache.maven.plugins:maven-help-plugin:3.1.0:evaluate -Dexpres
 echo "Increment snapshot version for next release"
 mvn build-helper:parse-version versions:set -DnewVersion=\${parsedVersion.majorVersion}.\${parsedVersion.minorVersion}.\${parsedVersion.nextIncrementalVersion}-SNAPSHOT
 
-git add pom.xml
-git commit -m "Updated snapshot with latest version"+$VERSION
+#git add pom.xml
+#git commit -m "Updated snapshot with latest version"+$VERSION
 
 echo "Build success and released the SNAPSHOT version "+ $VERSION
 
