@@ -35,11 +35,11 @@ VERSION_NEW=$(mvn org.apache.maven.plugins:maven-help-plugin:3.1.0:evaluate -Dex
 echo "next release version is " $VERSION_NEW
 git add pom.xml
 echo "added pom.xml file to develop"
-git commit -m "Updated snapshot with latest version for next release " $VERSION_NEW
+git commit -m "Updated snapshot with latest version for next release $VERSION_NEW" 
 
 echo "pulling new develop changes last time"
 git pull origin develop
-echo "Build success and released the SNAPSHOT version "+ $VERSION
+echo "Build success and released the SNAPSHOT version $VERSION"
 
 ls -ltra target/*
 
