@@ -8,11 +8,12 @@ image_resource:
     tag: 3.5.4-jdk-8
 
 inputs:
-  - name: version
   - name: concourse-web
 
 outputs:
   - name: artifactory-repository
+  - name: version
+  - name: updated-concourse-web
 
 caches:
   - path: .m2

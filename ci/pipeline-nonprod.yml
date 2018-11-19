@@ -1,5 +1,4 @@
 ---
-
 resource_types:
 - name: slack-notification
   type: docker-image
@@ -10,11 +9,19 @@ resource_types:
   type: docker-image
   source:
     repository: pivotalservices/artifactory-resource
+- name: ansible
+  type: docker-image
+  source:
+    repository: platformengineering/concourse-ansible-resource
+- name: pull-request
+  type: docker-image
+  source:
+    repository: jtarchie/pr
+    tag: latest
 
 groups:
   - name: Build
     jobs: 
-      - release-candidate-version
       - build
   - name: NonProductionDeployment
     jobs:
@@ -37,69 +44,35 @@ resources:
       branch: develop
       username: satishnaidu
       password: Sunday@23
-  - name: version
-    type: semver
+      ignore_paths:
+        - pom.xml
+  - name: push-concourse-web
+    type: git
     source:
-      driver: git
-      uri: https://gist.github.com/ef4361ca808a7b41fe7c9551467d81f6.git
-      branch: master
-      file: concourse-web.version
+      uri: https://github.com/satishnaidu/concourse-web.git
+      branch: develop
       username: satishnaidu
       password: Sunday@23
-  - name: slack-alert
-    type: slack-notification
-    source: 
-      url: https://hooks.slack.com/services/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
 
 jobs:
-  - name: release-candidate-version
-    serial: true
-    plan:
-      - get: concourse-web
-        trigger: true
-      - get: version
-        params: {pre: rc}
-      - put: version
-        params: {file: version/number}
-      - task: update-version
-        file: concourse-web/ci/tasks/version_source.yml
-      - put: concourse-web
-        params: {repository: updated-concourse-web}
-        on_success:
-          do:
-          - put: slack-alert
-            params:
-              channel: '#concourse-np-updates'
-              text: "From NP concourse pipeline: build status: passed"
-        on_failure:
-          do:
-          - put: slack-alert
-            params:
-              channel: '#concourse-np-updates'
-              text: "From NP concourse pipeline: build status: failed"
   - name: build
     plan:
-      - get: version
-        trigger: true
-        passed: [release-candidate-version]
       - get: concourse-web
         trigger: true
-        passed: [release-candidate-version]
       - task: run-build
         file: concourse-web/ci/tasks/run_build.yml
         params:
           ARTIFACTORY_USER: '!spectra'
           ARTIFACTORY_PW: spectra1!
           ARTIFACTORY_URL: https://artifactory.io.comcast.net/libs-snapshot-local
+      - put: push-concourse-web
+        params: {repository: updated-concourse-web}
       - put: artifactory-repository
         params: { file: ./artifactory-repository/concourse-web-*.jar }
 
   - name: deploy-to-development
     serial: true
     plan:
-      - get: version
-        trigger: true
-        passed: [build]
       - get: concourse-web
         passed: [build]
       - task: deploy-dev
