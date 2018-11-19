@@ -24,7 +24,7 @@ mvn -Dmaven.repo.local="../.m2" clean install -Dmaven.test.skip=true
 VERSION=$(mvn org.apache.maven.plugins:maven-help-plugin:3.1.0:evaluate -Dexpression=project.version -q -DforceStdout)
 
 echo "Creating tag for the for new checkins in develop branch"
-git tag -a $VERSION-SNAPSHOT -m "Created tag "+$VERSION +" for the new checkins in develop"
+git tag -a $VERSION-SNAPSHOT -m "Created tag $VERSION for the new checkins in develop"
 
 
 
