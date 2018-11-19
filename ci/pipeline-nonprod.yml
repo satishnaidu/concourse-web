@@ -23,6 +23,7 @@ groups:
   - name: Build
     jobs: 
       - build
+      - prepare-next-release
   - name: NonProductionDeployment
     jobs:
       - deploy-to-development

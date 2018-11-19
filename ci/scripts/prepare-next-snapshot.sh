@@ -9,8 +9,6 @@ git clone concourse-web updated-concourse-web
 cd updated-concourse-web
 set -e -u +x
 
-ls -ltr ../.m2
-
 git config --global user.email "satishkumar_andey@comcast.com"
 git config --global user.name "sandey080"
 
