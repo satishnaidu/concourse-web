@@ -68,7 +68,7 @@ jobs:
           ARTIFACTORY_PW: spectra1!
           ARTIFACTORY_URL: https://artifactory.io.comcast.net/libs-snapshot-local
       - put: push-concourse-web
-        params: {repository: updated-concourse-web}
+        params: {repository: updated-concourse-web, force: true}
       - put: artifactory-repository
         params: { file: ./artifactory-repository/concourse-web-*.jar }
 
@@ -79,10 +79,6 @@ jobs:
         passed: [build]
       - task: increment-version
         file: concourse-web/ci/tasks/prepare-next-release.yml
-        params:
-          ARTIFACTORY_USER: '!spectra'
-          ARTIFACTORY_PW: spectra1!
-          ARTIFACTORY_URL: https://artifactory.io.comcast.net/libs-snapshot-local
 
   - name: deploy-to-development
     serial: true
