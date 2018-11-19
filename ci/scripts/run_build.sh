@@ -20,7 +20,7 @@ git config --global user.name "sandey080"
 
 git pull origin develop
 echo "Creating tag for the for new checkins in develop branch"
-git tag -a $VERSION -m "Created tag $VERSION for the new checkins in develop"
+git tag -f -a -u $VERSION -m "Created tag $VERSION for the new checkins in develop"
 git push origin $VERSION
 
 
