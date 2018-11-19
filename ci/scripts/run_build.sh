@@ -26,12 +26,14 @@ VERSION=$(mvn org.apache.maven.plugins:maven-help-plugin:3.1.0:evaluate -Dexpres
 git config --global user.email "satishkumar_andey@comcast.com"
 git config --global user.name "sandey080"
 
+git pull origin develop
 echo "Creating tag for the for new checkins in develop branch"
 git tag -a $VERSION -m "Created tag $VERSION for the new checkins in develop"
 
 git push origin $VERSION
 
 
+git pull origin develop
 echo "Increment snapshot version for next release"
 mvn build-helper:parse-version versions:set -DnewVersion=\${parsedVersion.majorVersion}.\${parsedVersion.minorVersion}.\${parsedVersion.nextIncrementalVersion}-SNAPSHOT
 
@@ -42,7 +44,7 @@ VERSION_NEW=$(mvn org.apache.maven.plugins:maven-help-plugin:3.1.0:evaluate -Dex
 git add pom.xml
 git commit -m "Updated snapshot with latest version for next release "+$VERSION_NEW
 
-
+git pull origin develop
 echo "Build success and released the SNAPSHOT version "+ $VERSION
 
 ls -ltra target/*
