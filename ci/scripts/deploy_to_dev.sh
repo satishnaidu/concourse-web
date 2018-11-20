@@ -10,6 +10,7 @@ then
 	version=`cd concourse-web && git describe --abbrev=0 --tags`
 else:
 	version=$deploy_version
+fi
 #version=`cat ./version/number`
 echo "version number "+$version
 
