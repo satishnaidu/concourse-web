@@ -5,7 +5,11 @@ ls -ltra
 
 set -e -u -x
 
-version=`cd concourse-web && git describe --abbrev=0 --tags`
+if [ -z "$deploy_version" ]
+then
+	version=`cd concourse-web && git describe --abbrev=0 --tags`
+else:
+	version=$deploy_version
 #version=`cat ./version/number`
 echo "version number "+$version
 
@@ -23,6 +27,6 @@ set -x
 
 current_app_name=concourse-web-$version
 
-sshpass -p 'Comcast@12' scp  -o StrictHostKeyChecking=no ./deploy-to-dev/concourse-web-$version.jar sandey080@10.169.236.89://Users/sandey080/Comcast/Project/Codebase/workspace/concourse/concourse-web
+sshpass -p 'Comcast@12' scp  -o StrictHostKeyChecking=no ./deploy-to-dev/concourse-web-$version.jar sandey080@10.0.0.243://Users/sandey080/Comcast/Project/Codebase/workspace/concourse/concourse-web
 
 echo "Copying success to target location"

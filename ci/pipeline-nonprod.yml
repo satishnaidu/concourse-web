@@ -93,6 +93,7 @@ jobs:
           ARTIFACTORY_USER: '!spectra'
           ARTIFACTORY_PW: spectra1!
           ARTIFACTORY_URL: https://artifactory.io.comcast.net/libs-snapshot-local
+          deploy_version: '0.0.7-SNAPSHOT'
 
 
       
