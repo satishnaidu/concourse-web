@@ -17,6 +17,7 @@ params:
   ARTIFACTORY_USER:
   ARTIFACTORY_PW:
   ARTIFACTORY_URL:
+  deploy_version:
 
 
 run:
