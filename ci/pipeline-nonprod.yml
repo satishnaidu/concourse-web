@@ -79,6 +79,8 @@ jobs:
         passed: [build]
       - task: increment-version
         file: concourse-web/ci/tasks/prepare-next-release.yml
+      - put: push-concourse-web
+        params: {repository: updated-concourse-web, force: true}
 
   - name: deploy-to-development
     serial: true
