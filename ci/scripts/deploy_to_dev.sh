@@ -12,15 +12,16 @@ then
 	version=$deploy_version
 fi
 
-if [ -z $$deploy_version ]
+if [ -z $deploy_version ]
 then
    echo "-z $deploy_version : string length is zero"
+   version=$deploy_version
 else
    echo "-z $deploy_version : string length is not zero"
 fi
 
 #version=`cat ./version/number`
-echo "version number "+$version
+echo "version number " $version
 
 set +x
 
