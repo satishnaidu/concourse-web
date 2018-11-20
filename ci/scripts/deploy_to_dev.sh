@@ -7,7 +7,7 @@ set -e -u -x
 
 version=`cd concourse-web && git describe --abbrev=0 --tags`
 echo "deploy_version " $deploy_version
-if [ -z "$deploy_version" ]
+if [ -z $deploy_version ]
 then
 	version=$deploy_version
 fi
