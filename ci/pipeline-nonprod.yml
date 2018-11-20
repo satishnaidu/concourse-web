@@ -76,6 +76,7 @@ jobs:
     serial: true
     plan:
       - get: concourse-web
+        trigger: true
         passed: [build]
       - task: increment-version
         file: concourse-web/ci/tasks/prepare-next-release.yml
@@ -86,6 +87,7 @@ jobs:
     serial: true
     plan:
       - get: concourse-web
+        trigger: true
         passed: [build]
       - task: deploy-dev
         file: concourse-web/ci/tasks/deploy_to_dev.yml
